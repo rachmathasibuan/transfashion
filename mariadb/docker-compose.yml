@@ -1,0 +1,21 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - 33061:3306
+    hostname: localhost
+    restart: always
+    volumes:
+      - ./database:/var/lib/mysql
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - transfashion
+    environment:
+      MYSQL_ROOT_PASSWORD: ieMWilI0jhJiPJDWKsDqx2jgrCrxqw
+      TERM: xterm-256color
+
+networks:
+  transfashion:
+    external: true
