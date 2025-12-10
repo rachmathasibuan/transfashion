@@ -1,0 +1,22 @@
+services:
+  uptime:
+    image: elestio/uptime-kuma
+    container_name: uptime
+    hostname: uptime
+    ports:
+      - "8084:3001"
+    environment:
+      - DB_TYPE=sqlite
+      - DB_STORAGE=/app/data/uptime-kuma.db
+      - SOFTWARE_VERSION_TAG=latest
+      - URL=https://uptime.transfahsion.id
+    volumes:
+      - ./data:/app/data
+    restart: always
+    healthcheck:
+      disable: true
+    networks:
+      - transfashion
+networks:
+  transfashion:
+    external: true
